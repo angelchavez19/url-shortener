@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL shortener</title>
+  </head>
+  <body>
+    <main>
+      <form>
+        <input type="text" id="url" placeholder="URL" />
+        <button id="sendURL">Save URL</button>
+      </form>
+      <script>
+        const sendURLButton = document.getElementById('sendURL');
+        const urlInput = document.getElementById('url');
+
+        if (sendURLButton && urlInput) {
+          sendURLButton.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const response = await fetch('/api/create-url', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                url: urlInput.value,
+              }),
+            });
+          });
+        }
+      </script>
+    </main>
+  </body>
+</html>
