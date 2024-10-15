@@ -1,70 +1,70 @@
-![URL shortener](./url-shortener.jpg)
+![URL Shortener](./url-shortener.jpg)
 
 # URL Shortener
 
-Este es un proyecto **fullstack** de acortador de URLs desarrollado con **NestJS** en el backend y **HTML, CSS y JavaScript** en el frontend.
+This is a **fullstack** URL shortener project developed with **NestJS** for the backend and **HTML, CSS, and JavaScript** for the frontend.
 
-## 📋 Características
+## 📋 Features
 
-- Acortar URLs rápidamente mediante un formulario.
-- Mostrar la URL acortada junto con su fecha de expiración.
-- Paleta de colores oscura y diseño responsivo.
+- Quickly shorten URLs using a form.
+- Display the shortened URL along with its expiration date.
+- Dark color palette and responsive design.
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Technologies Used
 
 - **Frontend:** HTML5, CSS3, JavaScript
 - **Backend:** NestJS (Node.js Framework)
-- **Base de Datos:** PostgreSQL
+- **Database:** PostgreSQL
 
-## 📦 Instalación
+## 📦 Installation
 
-Sigue estos pasos para ejecutar el proyecto en tu máquina local.
+Follow these steps to run the project on your local machine.
 
-### Prerrequisitos
+### Prerequisites
 
-- **Node.js** y **npm** instalados.  
-  Puedes descargarlos desde [Node.js](https://nodejs.org).
+- **Node.js** and **npm** installed.  
+  You can download them from [Node.js](https://nodejs.org).
 
-- **NestJS CLI** instalado globalmente:
+- **NestJS CLI** installed globally:
 
   ```bash
   npm install -g @nestjs/cli
   ```
 
-### Paso 1: Clonar el Repositorio
+### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/angelchavez19/url-shortener.git
 cd url-shortener
 ```
 
-### Paso 2: Configurar el Backend (NestJS)
+### Step 2: Set Up the Backend (NestJS)
 
-1. Accede al directorio del backend:
+1. Navigate to the backend directory:
 
    ```bash
    cd backend
    ```
 
-2. Instala las dependencias necesarias:
+2. Install the required dependencies:
 
    ```bash
    npm install
    ```
 
-3. Crea un archivo `.env` en el directorio del backend y agrega la configuración necesaria (como la URL de la base de datos):
+3. Create a `.env` file in the backend directory and add the necessary configuration (such as the database URL):
 
    ```env
    DATABASE_URL=postgresql://user:password@localhost:5432/urlshortener
    ```
 
-4. Inicia el servidor NestJS:
+4. Start the NestJS server:
 
    ```bash
    npm run start:dev
    ```
 
-   El backend estará disponible en `http://localhost:3000`.
+   The backend will be available at `http://localhost:3000`.
 
 ---
 
@@ -72,7 +72,7 @@ cd url-shortener
 
 ### **POST** `/api/url`
 
-Este endpoint recibe una URL para acortarla.
+This endpoint receives a URL to shorten.
 
 **Request Body:**
 
@@ -93,11 +93,11 @@ Este endpoint recibe una URL para acortarla.
 
 ### **GET** `/:shortened`
 
-Este endpoint permite redireccionar a la URL original a partir de la versión acortada.
+This endpoint allows redirecting to the original URL from the shortened version.
 
 ---
 
-## 🧑‍💻 Autor
+## 🧑‍💻 Author
 
-Desarrollado por [Angel Chávez](https://angelchavezportfolio.vercel.app/).  
+Developed by [Angel Chávez](https://angelchavezportfolio.vercel.app/).  
 [LinkedIn](https://www.linkedin.com/in/angel-ch%C3%A1vez) | [GitHub](https://github.com/angelchavez19)
