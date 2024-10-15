@@ -1,85 +1,103 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+![URL shortener](./url-shortener.jpg)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# URL Shortener
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este es un proyecto **fullstack** de acortador de URLs desarrollado con **NestJS** en el backend y **HTML, CSS y JavaScript** en el frontend.
 
-## Description
+## 📋 Características
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Acortar URLs rápidamente mediante un formulario.
+- Mostrar la URL acortada junto con su fecha de expiración.
+- Paleta de colores oscura y diseño responsivo.
 
-## Project setup
+## 🛠️ Tecnologías Utilizadas
 
-```bash
-$ npm install
-```
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Backend:** NestJS (Node.js Framework)
+- **Base de Datos:** PostgreSQL
 
-## Compile and run the project
+## 📦 Instalación
 
-```bash
-# development
-$ npm run start
+Sigue estos pasos para ejecutar el proyecto en tu máquina local.
 
-# watch mode
-$ npm run start:dev
+### Prerrequisitos
 
-# production mode
-$ npm run start:prod
-```
+- **Node.js** y **npm** instalados.  
+  Puedes descargarlos desde [Node.js](https://nodejs.org).
 
-## Run tests
+- **NestJS CLI** instalado globalmente:
+
+  ```bash
+  npm install -g @nestjs/cli
+  ```
+
+### Paso 1: Clonar el Repositorio
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/angelchavez19/url-shortener.git
+cd url-shortener
 ```
 
-## Resources
+### Paso 2: Configurar el Backend (NestJS)
 
-Check out a few resources that may come in handy when working with NestJS:
+1. Accede al directorio del backend:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+   ```bash
+   cd backend
+   ```
 
-## Support
+2. Instala las dependencias necesarias:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+   ```bash
+   npm install
+   ```
 
-## Stay in touch
+3. Crea un archivo `.env` en el directorio del backend y agrega la configuración necesaria (como la URL de la base de datos):
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+   ```env
+   DATABASE_URL=postgresql://user:password@localhost:5432/urlshortener
+   ```
 
-## License
+4. Inicia el servidor NestJS:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+   ```bash
+   npm run start:dev
+   ```
+
+   El backend estará disponible en `http://localhost:3000`.
+
+---
+
+## ⚙️ API Endpoints
+
+### **POST** `/api/url`
+
+Este endpoint recibe una URL para acortarla.
+
+**Request Body:**
+
+```json
+{
+  "url": "https://example.com"
+}
+```
+
+**Response:**
+
+```json
+{
+  "shortened": "lecaqx",
+  "expires": "2024-10-17T13:30:21.230Z"
+}
+```
+
+### **GET** `/:shortened`
+
+Este endpoint permite redireccionar a la URL original a partir de la versión acortada.
+
+---
+
+## 🧑‍💻 Autor
+
+Desarrollado por [Angel Chávez](https://angelchavezportfolio.vercel.app/).  
+[LinkedIn](https://www.linkedin.com/in/angel-ch%C3%A1vez) | [GitHub](https://github.com/angelchavez19)

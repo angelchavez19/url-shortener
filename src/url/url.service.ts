@@ -18,10 +18,6 @@ export class UrlService {
 
   constructor(private prisma: PrismaService) {}
 
-  async getURLs() {
-    return await this.prisma.url.findMany();
-  }
-
   async createURL(url: CreateUrlDTO) {
     await this._deleteURLs(); // TODO: Job scheduler
 

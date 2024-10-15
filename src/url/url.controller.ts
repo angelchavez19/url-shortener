@@ -25,11 +25,6 @@ export class UrlController {
     return this.service.redirectToOriginalURL(res, url.short_url);
   }
 
-  @Get('api/urls')
-  getAllURLs() {
-    return this.service.getURLs();
-  }
-
   @Post('api/url')
   createUrl(@Body() url: CreateUrlDTO) {
     return this.service.createURL(url);
