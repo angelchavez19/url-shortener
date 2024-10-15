@@ -1,10 +1,19 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  Redirect,
+} from '@nestjs/common';
 import { CreateUrlDTO } from './dto/create-url.dto';
 import { PrismaService } from 'src/prisma.service';
+import { join } from 'path';
+import { Response } from 'express';
 
 @Injectable()
 export class UrlService {
-  chars: string = 'abcdefghijklmnopqrstuvwxyz';
+  chars: string =
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+  shortUrlLength = 6;
 
   constructor(private prisma: PrismaService) {}
 
@@ -30,8 +39,19 @@ export class UrlService {
     };
   }
 
-  async getUrls() {
-    return await this.prisma.url.findMany();
+  async redirectToOriginalURL(res: Response, short_url: string) {
+    if (short_url === 'favicon.svg') return;
+
+    if (short_url.length !== this.shortUrlLength)
+      throw new HttpException('Url not found', HttpStatus.NOT_FOUND);
+
+    const dbUrl = await this.prisma.url.findUnique({
+      where: { shortened: short_url },
+    });
+
+    if (!dbUrl) throw new HttpException('Url not found', HttpStatus.NOT_FOUND);
+
+    res.redirect(301, dbUrl.original);
   }
 
   async _deleteURLs() {
@@ -44,7 +64,7 @@ export class UrlService {
     let loopCounter = 0;
 
     while (true) {
-      const shortened = this._getShortened(6);
+      const shortened = this._getShortened(this.shortUrlLength);
       const expiresAt = new Date(
         new Date().getTime() + 1000 * 60 * 60 * 24 * 30,
       );
