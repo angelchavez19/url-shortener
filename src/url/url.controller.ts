@@ -7,16 +7,31 @@ import { Response } from 'express';
 export class UrlController {
   constructor(private service: UrlService) {}
 
+  @Get()
+  index() {
+    return this.service._getStaticFileResponse('index.html', 'text/html');
+  }
+
+  @Get('favicon.svg')
+  favicon() {
+    return this.service._getStaticFileResponse('favicon.svg', 'image/svg+xml');
+  }
+
   @Get(':short_url')
-  async redirectToOriginalURL(
+  redirectToOriginalURL(
     @Res() res: Response,
     @Param() url: { short_url: string },
   ) {
     return this.service.redirectToOriginalURL(res, url.short_url);
   }
 
+  @Get('api/urls')
+  getAllURLs() {
+    return this.service.getURLs();
+  }
+
   @Post('api/url')
-  async createUrl(@Body() url: CreateUrlDTO) {
+  createUrl(@Body() url: CreateUrlDTO) {
     return this.service.createURL(url);
   }
 }

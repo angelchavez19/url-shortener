@@ -2,12 +2,13 @@ import {
   HttpException,
   HttpStatus,
   Injectable,
-  Redirect,
+  StreamableFile,
 } from '@nestjs/common';
 import { CreateUrlDTO } from './dto/create-url.dto';
 import { PrismaService } from 'src/prisma.service';
 import { join } from 'path';
 import { Response } from 'express';
+import { createReadStream } from 'fs';
 
 @Injectable()
 export class UrlService {
@@ -16,6 +17,10 @@ export class UrlService {
   shortUrlLength = 6;
 
   constructor(private prisma: PrismaService) {}
+
+  async getURLs() {
+    return await this.prisma.url.findMany();
+  }
 
   async createURL(url: CreateUrlDTO) {
     await this._deleteURLs(); // TODO: Job scheduler
@@ -40,8 +45,6 @@ export class UrlService {
   }
 
   async redirectToOriginalURL(res: Response, short_url: string) {
-    if (short_url === 'favicon.svg') return;
-
     if (short_url.length !== this.shortUrlLength)
       throw new HttpException('Url not found', HttpStatus.NOT_FOUND);
 
@@ -95,5 +98,12 @@ export class UrlService {
       shortened += this.chars[Math.floor(Math.random() * this.chars.length)];
 
     return shortened;
+  }
+
+  _getStaticFileResponse(filename: string, type?: string) {
+    return new StreamableFile(
+      createReadStream(join(process.cwd(), 'static', filename)),
+      { type },
+    );
   }
 }
